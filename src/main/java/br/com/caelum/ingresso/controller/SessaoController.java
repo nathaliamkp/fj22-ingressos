@@ -31,12 +31,13 @@ public class SessaoController {
 	@GetMapping ("/admin/sessao")
 	public ModelAndView form(@RequestParam("salaId") Integer salaId, SessaoForm form) {
 		
-		form.setSalaID(salaId);
+		form.setSalaId(salaId);
 		
 		ModelAndView modelAndView = new ModelAndView("sessao/sessao");
 		
 		modelAndView.addObject("sala", salaDao.findOne(salaId));
 		modelAndView.addObject("filmes", filmeDao.findAll());
+		modelAndView.addObject("form", form);
 	
 	return modelAndView;
 	} 
@@ -49,7 +50,7 @@ public class SessaoController {
 		
 		sessaoDao.save(sessao);
 		
-		return new ModelAndView("redirect:/admin/sala" + form.getSalaID() + "/sessoes");
+		return new ModelAndView("redirect:/admin/sala/" + form.getSalaId() + "/sessoes");
 	}
 	
 	

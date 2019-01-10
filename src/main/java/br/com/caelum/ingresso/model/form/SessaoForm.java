@@ -17,7 +17,7 @@ public class SessaoForm {
 	private Integer id;
 	
 	@NotNull
-	private Integer salaID;
+	private Integer salaId;
 	
 	@DateTimeFormat(pattern="HH:mm")
 	@NotNull
@@ -34,12 +34,12 @@ public class SessaoForm {
 		this.id = id;
 	}
 
-	public Integer getSalaID() {
-		return salaID;
+	public Integer getSalaId() {
+		return salaId;
 	}
 
-	public void setSalaID(Integer salaID) {
-		this.salaID = salaID;
+	public void setSalaId(Integer salaId) {
+		this.salaId = salaId;
 	}
 
 	public LocalTime getHorario() {
@@ -60,7 +60,7 @@ public class SessaoForm {
 
 	public Sessao toSessao(SalaDao salaDao, FilmeDao filmeDao) {
 		Filme filme =  filmeDao.findOne(filmeId);
-		Sala sala = salaDao.findOne(salaID);
+		Sala sala = salaDao.findOne(salaId);
 		
 		Sessao sessao = new Sessao(horario, filme, sala);
 		sessao.setId(id);

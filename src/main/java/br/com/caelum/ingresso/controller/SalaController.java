@@ -70,6 +70,7 @@ public class SalaController {
 
         ModelAndView view = new ModelAndView("sessao/lista");
         view.addObject("sessoes", sessaoDao.buscaSessoesDaSala(sala));
+        view.addObject("sala", sala); 
 
         return view;
     }
